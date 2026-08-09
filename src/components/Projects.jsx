@@ -7,8 +7,8 @@ const projects = [
       "A fully responsive e-commerce website built with React, Node.js, and MongoDB. It features user authentication, product listings, shopping cart functionality, and secure payment integration.",
     image: "/images/ecommerce.png",
     tech: "React.js,Node.js, MongoDB, Express.js",
-    live: "#",
-    code: "#",
+    live: "https://ecommerce-frontend-ashen-beta.vercel.app/",
+    code: "https://github.com/rakinmathew/Ecommerce-App.git",
   },
   {
     title: "Personal Portfolio Website",
@@ -34,8 +34,8 @@ const projects = [
       "A responsive UI clone of the Netflix streaming service built with React and Tailwind CSS. It features a modern design, responsive layout, and interactive elements.",
     image: "/images/netflix.png",
     tech: "React.js, Tailwind CSS",
-    live: "#",
-    code: "#",
+    live: "https://rakin-netflix-ui-clone-udr8.vercel.app/",
+    code: "https://github.com/rakinmathew/rakin-netflix-ui-clone.git",
   },
   {
     title: "Product Landing Page",
@@ -52,8 +52,8 @@ const projects = [
       "A simple calculator application built with React & Tailwind CSS. It supports basic arithmetic operations and has a clean and intuitive user interface.",
     image: "/images/calculator.png",
     tech: "React.js, Tailwind CSS",
-    live: "#",
-    code: "#",
+    live: "https://react-calculator-coral-tau.vercel.app/",
+    code: "https://github.com/rakinmathew/react-calculator.git",
   },
 ];
 
@@ -105,12 +105,16 @@ const Projects = () => {
               <div className="flex justify-between">
                 <a
                   href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 font-medium hover:text-blue-800"
                 >
                   Live Demo
                 </a>
                 <a
                   href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-700 font-medium hover:text-gray-900"
                 >
                   Source Code
