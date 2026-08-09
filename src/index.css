@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+
+/* Animation Frame Works */
+
+/*! @Keyframes fadeInUp */
+
+@keyframes FadeInUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0),
+  }
+  
+}
+
+/*! Animation classes */
+
+.fade-in {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+.fade-in-delay-1 {
+  animation: fadeInUp 1.4s ease-out forwards;
+}
+.fade-in-delay-2 {
+  animation: fadeInUp 1.6s ease-out forwards;
+}
