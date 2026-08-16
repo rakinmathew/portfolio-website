@@ -1,6 +1,28 @@
 import React from "react";
-
+import { useState } from "react";
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+
+    setSubmitted(true);
+  };
+
   return (
     <section id="contact" className="bg-[#2c4054] px-6 py-20">
       <div className="text-center mb-12">
@@ -53,7 +75,10 @@ const Contact = () => {
 
         <div>
           {/* Form data */}
-          <form className="bg-white  rounded-xl p-6 md:p-8 shadow-xl">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white  rounded-xl p-6 md:p-8 shadow-xl"
+          >
             {/* Name Input */}
             <div className="mb-5">
               <label
@@ -67,6 +92,8 @@ const Contact = () => {
                 id="name"
                 name="name"
                 placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
               />
             </div>
@@ -85,6 +112,8 @@ const Contact = () => {
                 id="email"
                 name="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
               />
             </div>
@@ -103,6 +132,8 @@ const Contact = () => {
                 id="subject"
                 name="subject"
                 placeholder="Write your subject...."
+                value={formData.subject}
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
               />
             </div>
@@ -121,6 +152,8 @@ const Contact = () => {
                 name="message"
                 rows="5"
                 placeholder="Write your message...."
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none resize-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
               ></textarea>
             </div>
@@ -132,6 +165,18 @@ const Contact = () => {
               Send Message
             </button>
           </form>
+
+          {/* Success message */}
+
+          {submitted && (
+            <p className="text-green-500 mt-4 text-center font-semibold">
+              Message sent successfully!
+            </p>
+          )}
+
+          {/* <pre className="text-white mt-6">
+            {JSON.stringify(formData, null, 2)}
+          </pre> */}
         </div>
       </div>
     </section>

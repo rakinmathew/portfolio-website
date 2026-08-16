@@ -1,105 +1,77 @@
 import React from "react";
 
 const Skills = () => {
+  const skillGroups = [
+    {
+      title: "Front-End Development",
+      skills: [
+        ["HTML5", "90%"],
+        ["CSS3", "70%"],
+        ["JavaScript", "55%"],
+        ["React.js & Next.js", "65%"],
+      ],
+    },
+    {
+      title: "Back-End Development",
+      skills: [
+        ["Node.js", "60%"],
+        ["Express.js", "60%"],
+        ["MongoDB", "60%"],
+        ["PostgreSQL", "60%"],
+      ],
+    },
+    {
+      title: "Design & Tools",
+      skills: [
+        ["Responsive Design", "75%"],
+        ["Figma UI/UX Design", "60%"],
+        ["Tailwind CSS", "85%"],
+        ["Git & GitHub", "60%"],
+      ],
+    },
+  ];
+
   return (
     <section
-      className="py-20 px-4 bg-gradient-to-br from-[#1f2f46] via-[#2c3e50] to-[#3498db] text-gray-800"
+      className="bg-gradient-to-br from-[#1f2f46] via-[#2c3e50] to-[#3498db] px-4 py-20"
       id="skills"
     >
-      <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-100">
+      <div className="mx-auto mb-12 max-w-6xl text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#dbeafe]">
           My Skills
+        </p>
+        <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+          Creative problem solving with modern tech
         </h2>
-        <div className="w-16 h-1 bg-blue-600 mx-auto mt-4"></div>
+        <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#7dd3fc] to-[#2563eb]" />
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Card Components */}
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
+        {skillGroups.map((group) => (
+          <div
+            key={group.title}
+            className="rounded-2xl border border-white/10 bg-white/10 p-6 shadow-[0_20px_50px_rgba(15,23,42,0.2)] backdrop-blur-sm"
+          >
+            <h3 className="mb-6 text-center text-xl font-bold text-[#dbeafe]">
+              {group.title}
+            </h3>
 
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl text-blue-600 text-center mb-6 font-bold">
-            Front-End Development
-          </h3>
-          {/* Skills */}
-
-          {[
-            ["HTML5", "90%"],
-            ["CSS3", "70%"],
-            ["JavaScript", "55%"],
-            ["React.js & Next.js", "65%"],
-          ].map(([skill, percent]) => (
-            <div key={skill} className="mb-4">
-              <div className="flex justify-between mb-1 font-semibold text-lg">
-                <span>{skill}</span>
-                <span>{percent}</span>
+            {group.skills.map(([skill, percent]) => (
+              <div key={skill} className="mb-5">
+                <div className="mb-2 flex items-center justify-between text-sm font-semibold text-white/90 md:text-base">
+                  <span>{skill}</span>
+                  <span>{percent}</span>
+                </div>
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/15">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-[#7dd3fc] to-[#2563eb]"
+                    style={{ width: percent }}
+                  />
+                </div>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full w-[90%]"
-                  style={{ width: percent }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Backend Card */}
-
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl text-blue-600 text-center mb-6 font-bold">
-            Back-End Development
-          </h3>
-          {/* Skills */}
-
-          {[
-            ["Node.js", "60%"],
-            ["Express.js", "60%"],
-            ["MongoDB", "60%"],
-            ["PostgreSQL", "60%"],
-          ].map(([skill, percent]) => (
-            <div key={skill} className="mb-4">
-              <div className="flex justify-between mb-1 font-semibold text-lg">
-                <span>{skill}</span>
-                <span>{percent}</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full w-[90%]"
-                  style={{ width: percent }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Design & Tools */}
-
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl text-blue-600 text-center mb-6 font-bold">
-            Design & Tools
-          </h3>
-          {/* Skills */}
-
-          {[
-            ["Responsive Design", "75%"],
-            ["Figma UI/UX Design", "60%"],
-            ["Tailwind CSS", "85%"],
-            ["Git & GitHub", "60%"],
-          ].map(([skill, percent]) => (
-            <div key={skill} className="mb-4">
-              <div className="flex justify-between mb-1 font-semibold text-lg">
-                <span>{skill}</span>
-                <span>{percent}</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full w-[90%]"
-                  style={{ width: percent }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );
