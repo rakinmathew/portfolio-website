@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,18 +11,66 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   console.log(formData);
+
+  //   setSubmitted(true);
+
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await emailjs.send("service_uaxhui7", "k178wmee", formData, {
+  //       publicKey: "X8PS_VVjTmZy2zDkp",
+  //     });
+  //     alert("Message sent successfully! Thank You for Contacting me.");
+  //     console.log("SUCCESS:", formData);
+  //   } catch (error) {
+  //     console.error("Emailjs Error:", error);
+
+  //     alert("Failed to send message. Please try again.");
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    setSubmitted(false);
+    setLoading(true);
 
-    setSubmitted(true);
+    try {
+      await emailjs.send("service_uaxhui7", "template_si5cimg", formData, {
+        publicKey: "_xCbhRLu3N_wPpxz3",
+      });
+
+      setSubmitted(true);
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitted(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -160,18 +210,24 @@ const Contact = () => {
 
             <button
               type="submit"
-              className=" w-full bg-[#3498db] text-white font-medium py-3 px-6 rounded-md hover:bg-blue-600 transition duration-300"
+              disabled={loading}
+              className="w-full bg-[#3498db] text-white font-medium py-3 px-6 rounded-md hover:bg-blue-600 transition duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
 
           {/* Success message */}
 
           {submitted && (
-            <p className="text-green-500 mt-4 text-center font-semibold">
-              Message sent successfully!
-            </p>
+            <div className="mt-5 p-4 rounded-md bg-green-50 border border-green-200">
+              <p className="text-green-600 text-center font-medium">
+                ✓ Thank you! Your message has been sent successfully.
+              </p>
+              <p className="text-green-600 text-center text-sm mt-2">
+                I'll get back to you as soon as possible.
+              </p>
+            </div>
           )}
 
           {/* <pre className="text-white mt-6">
