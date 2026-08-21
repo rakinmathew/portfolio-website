@@ -46,13 +46,18 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
             className="rounded-md border border-white/10 p-2 text-xl text-white transition hover:border-[#7dd3fc] hover:text-[#7dd3fc] md:hidden"
             aria-label="Toggle navigation"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? <FaTimes /> : <FaBars />}
           </button>
         </div>
 
         {open && (
-          <ul className="flex flex-col gap-4 border-t border-white/10 py-5 text-center text-lg md:hidden">
+          <ul
+            id="mobile-navigation"
+            className="flex flex-col gap-4 border-t border-white/10 py-5 text-center text-lg md:hidden"
+          >
             {[
               ["Home", "#home"],
               ["About", "#about"],

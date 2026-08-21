@@ -12,39 +12,51 @@ const Contact = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  // Validation Function
+  const validateForm = () => {
+    const newErrors = {};
 
-  //   console.log(formData);
+    if (!formData.name.trim()) {
+      newErrors.name = "Please Enter Your Name";
+    }
 
-  //   setSubmitted(true);
+    if (!formData.email.trim()) {
+      newErrors.email = "Please Enter Your Email";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please Enter a Valid Email Address";
+    }
 
-  // };
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Please Enter a Subject";
+    }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+    if (!formData.message.trim()) {
+      newErrors.message = "Please Enter Your Message";
+    }
 
-  //   try {
-  //     await emailjs.send("service_uaxhui7", "k178wmee", formData, {
-  //       publicKey: "X8PS_VVjTmZy2zDkp",
-  //     });
-  //     alert("Message sent successfully! Thank You for Contacting me.");
-  //     console.log("SUCCESS:", formData);
-  //   } catch (error) {
-  //     console.error("Emailjs Error:", error);
-
-  //     alert("Failed to send message. Please try again.");
-  //   }
-  // };
+    return newErrors;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation
+
+    const validationErrors = validateForm();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({}); // Clear previous errors if any
 
     setSubmitted(false);
     setLoading(true);
@@ -76,7 +88,7 @@ const Contact = () => {
   return (
     <section id="contact" className="bg-[#2c4054] px-6 py-20">
       <div className="text-center mb-12">
-        <h1 className="text-white text-4xl font-bold">Let's Work Together</h1>
+        <h2 className="text-white text-4xl font-bold">Let's Work Together</h2>
 
         <div className="w-16 h-1 bg-[#3498db] mx-auto mt-4"></div>
 
@@ -144,8 +156,16 @@ const Contact = () => {
                 placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                className={`w-full border rounded-md px-4 py-3 outline-none transition duration-300 shadow-sm ${
+                  errors.name
+                    ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500"
+                    : "border-gray-300 focus:border-[#3498db] focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                }`}
               />
+
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
             </div>
 
             {/* Email Input */}
@@ -164,8 +184,16 @@ const Contact = () => {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                className={`w-full border rounded-md px-4 py-3 outline-none transition duration-300 shadow-sm ${
+                  errors.email
+                    ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500"
+                    : "border-gray-300 focus:border-[#3498db] focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                }`}
               />
+
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
 
             {/* Subject Input */}
@@ -184,8 +212,15 @@ const Contact = () => {
                 placeholder="Write your subject...."
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                className={`w-full border rounded-md px-4 py-3 outline-none transition duration-300 shadow-sm ${
+                  errors.subject
+                    ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500"
+                    : "border-gray-300 focus:border-[#3498db] focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                }`}
               />
+              {errors.subject && (
+                <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+              )}
             </div>
 
             {/* Message Input */}
@@ -204,8 +239,15 @@ const Contact = () => {
                 placeholder="Write your message...."
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none resize-none focus:border-[#3498db] transition duration-300 shadow-sm focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                className={`w-full border rounded-md px-4 py-3 outline-none resize-none transition duration-300 shadow-sm ${
+                  errors.message
+                    ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-500"
+                    : "border-gray-300 focus:border-[#3498db] focus:shadow-md focus:ring-1 focus:ring-[#3498db]"
+                }`}
               ></textarea>
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              )}
             </div>
 
             <button

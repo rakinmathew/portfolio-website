@@ -16,9 +16,9 @@ const Hero = () => {
         </p>
 
         <p className="text-base tracking-wide text-white/90 sm:text-lg md:text-xl">
-          Web Developer <span className="mx-2 text-gray-300">|</span>
-          Freelancer <span className="mx-2 text-gray-300">|</span>
-          Designer
+          Junior Full Stack MERN Developer
+          <span className="mx-2 text-gray-300">|</span>
+          Freelancer
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-4 md:flex-row">

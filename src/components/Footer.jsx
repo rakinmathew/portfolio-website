@@ -111,7 +111,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-gray-400 md:flex-row">
-          <p>© 2026 Rakin K. Mathew</p>
+          <p> © 2026 Rakin K. Mathew</p>
           <p>Built with React.js ❤️</p>
         </div>
       </div>
