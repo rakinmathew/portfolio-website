@@ -29,8 +29,8 @@ const projects = [
       "A weather application that provides real-time weather information for any location. It uses the OpenWeatherMap API to fetch data and displays it in a user-friendly interface.",
     image: "/images/weather.png",
     tech: "React.js, Tailwind CSS, OpenWeatherMap API",
-    live: "#projects",
-    code: "https://github.com/rakinmathew",
+    live: "https://weather-app-kohl-one-29.vercel.app/",
+    code: "https://github.com/rakinmathew/weather-app.git",
   },
   {
     title: "Netflix UI Clone",
