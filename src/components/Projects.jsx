@@ -59,6 +59,17 @@ const projects = [
     live: "https://react-calculator-coral-tau.vercel.app/",
     code: "https://github.com/rakinmathew/react-calculator.git",
   },
+
+   {
+    title: "Authentication App",
+    description:
+      "A simple calculator application built with React & Tailwind CSS. It supports basic arithmetic operations and has a clean and intuitive user interface.",
+    image: calculator,
+    tech: "React.js, Tailwind CSS",
+    live: "https://react-calculator-coral-tau.vercel.app/",
+    code: "https://github.com/rakinmathew/react-calculator.git",
+  },
+
 ];
 
 const Projects = () => {
@@ -96,7 +107,7 @@ const Projects = () => {
                 {project.description}
               </p>
 
-              <div className="mb-5 flex flex-wrap gap-2">
+              <div className="mb-4 flex flex-wrap gap-2">
                 {project.tech.split(",").map((item, techIndex) => (
                   <span
                     key={techIndex}
