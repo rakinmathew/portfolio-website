@@ -103,7 +103,7 @@ const Projects = () => {
               <h3 className="mb-3 text-xl font-semibold text-gray-900">
                 {project.title}
               </h3>
-              <p className="mb-4 text-sm leading-6 text-gray-600">
+              <p className="mb-5 text-sm leading-6 text-gray-600">
                 {project.description}
               </p>
 
